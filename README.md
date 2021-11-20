@@ -68,7 +68,7 @@ Considering that the application works to increase security and stability, a few
 ## Results
 
 <p align="center">
-Write to buffer<br \>
+GIF<br \>
    <img src="https://github.com/GHRik/xBerry-Exercise/blob/main/images/result.gif" width="70%" height="70%" /><br \>
 </p>
 
