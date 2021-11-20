@@ -11,8 +11,7 @@ class iLifeCycleMenager
     public:
         iLifeCycleMenager();
         virtual ~iLifeCycleMenager();
-        //iSensorMenager & sensorMenager, iLogger & logger
-        virtual void start( ) = 0;
+        virtual void start() = 0;
 
 };
 

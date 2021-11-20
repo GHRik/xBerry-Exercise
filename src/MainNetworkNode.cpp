@@ -1,6 +1,7 @@
 #include "MainNetworkNode.hpp"
 
-MainNetworkNode::MainNetworkNode()
+MainNetworkNode::MainNetworkNode(size_t bufforSize, iLifeCycle *lifeCycle, iLogger *logger)
+: bufforSize(bufforSize), lifeCycle(lifeCycle), logger(logger)
 {
     //ctor
 }
@@ -8,4 +9,9 @@ MainNetworkNode::MainNetworkNode()
 MainNetworkNode::~MainNetworkNode()
 {
     //dtor
+}
+
+ErrorCodes MainNetworkNode::registry(iLifeCycle *ptrToRegistry)
+{
+    return lifeCycle->registry(this);
 }

@@ -1,6 +1,6 @@
 #include "../headers/LifeCycle.hpp"
 
-LifeCycle::LifeCycle(iLogger *logger)
+LifeCycle::LifeCycle(iLogger *logger) : logger(logger)
 {
 }
 
@@ -26,9 +26,10 @@ void LifeCycle::start()
 {
     for(size_t i = 0; i < objectToLifeArray.size(); ++i)
     {
-        std::cout << "Life cycle start with: " << objectToLifeArray.size() << "services" << std::endl;
         objectToLifeArray[i]->run();
     }
+
+    logger->logInfo("Life cycle start with: "+std::to_string(objectToLifeArray.size())+" services");
 }
 
 
