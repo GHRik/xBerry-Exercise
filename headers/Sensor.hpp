@@ -3,17 +3,19 @@
 
 #include "iSensor.hpp"
 #include "SensorMenager.hpp"
+#include "iLogger.hpp"
 
 class Sensor : public iSensor
 {
     public:
-        Sensor( iSensorMenager *sensorMenager );
+        Sensor( iSensorMenager *sensorMenager, iLogger *logger);
         virtual ~Sensor();
-        ErrorCodes run(){return ErrorCodes::NOT_OK;};
+        ErrorCodes run();
         ErrorCodes routine(){return ErrorCodes::NOT_OK;};
 
     private:
         iSensorMenager *sensorMenager;
+        iLogger *logger;
 };
 
 #endif // SENSOR_HPP

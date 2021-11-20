@@ -26,6 +26,7 @@ void LifeCycle::start()
 {
     for(size_t i = 0; i < objectToLifeArray.size(); ++i)
     {
+        std::cout << "Life cycle start with: " << objectToLifeArray.size() << "services" << std::endl;
         objectToLifeArray[i]->run();
     }
 }

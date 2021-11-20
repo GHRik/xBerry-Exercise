@@ -3,16 +3,21 @@
 
 #include "iLifeCycle.hpp"
 #include "iLogger.hpp"
+#include <string>
+#include <iostream>
+
+
+#define LOG_LEVEL
 
 class Logger : public iLogger, public iLifeCycle
 {
     public:
         Logger();
         virtual ~Logger();
-        ErrorCodes logError(std::string log){return ErrorCodes::NOT_OK;}
-        ErrorCodes logInfo(std::string log){return ErrorCodes::NOT_OK;}
-        ErrorCodes logWarrning(std::string log){return ErrorCodes::NOT_OK;}
-        ErrorCodes logEvent( std::string prefix ,std::string log){return ErrorCodes::NOT_OK;}
+        ErrorCodes logError(std::string log);
+        ErrorCodes logInfo(std::string log);
+        ErrorCodes logWarrning(std::string log);
+        ErrorCodes logEvent( std::string prefix ,std::string log);
         ErrorCodes registry(iLifeCycle *ptrToRegistry);
         ErrorCodes run(){return ErrorCodes::NOT_OK;}
         void passLifeCycle(iLifeCycle *lifeCycle);

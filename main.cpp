@@ -5,6 +5,8 @@
 #include "SensorMenager.hpp"
 #include "LifeCycle.hpp"
 
+
+
 int main()
 {
     Logger logger;
@@ -12,11 +14,12 @@ int main()
     logger.passLifeCycle(&lifeCycle);
     SensorMenager sensorMenager(&lifeCycle,&logger);
     sensorMenager.registry(&sensorMenager);
-    Sensor sensorFirst(&sensorMenager);
-    Sensor sensorSecond(&sensorMenager);
-    Sensor sensorThird(&sensorMenager);
+    Sensor sensorFirst(&sensorMenager, &logger);
+    Sensor sensorSecond(&sensorMenager, &logger);
+    Sensor sensorThird(&sensorMenager, &logger);
 
     lifeCycle.start();
+
 
     return 0;
 }

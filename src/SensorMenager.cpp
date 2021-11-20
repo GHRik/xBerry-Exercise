@@ -8,7 +8,12 @@ SensorMenager::~SensorMenager()
 
 ErrorCodes SensorMenager::registry(iLifeCycle *ptrToRegistry)
 {
-    return lifeCycle->registry(this);
+    ErrorCodes code;
+    code = lifeCycle->registry(this);
+    if(code != ErrorCodes ::NOT_OK)
+    {
+        return code;
+    }
 }
 
 ErrorCodes SensorMenager::registrySensor(iSensor* ptrToRegistry)
@@ -33,8 +38,9 @@ ErrorCodes SensorMenager::run()
         code = sensorsVect[i]->run();
         if(code != ErrorCodes::OK)
         {
-            break;
+            return code;
         }
     }
+    logger->logInfo("Start "+std::to_string(sensorsVect.size())+"sensors");
     return code;
 }
