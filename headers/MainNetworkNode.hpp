@@ -5,6 +5,7 @@
 #include "iLogger.hpp"
 #include "iMainNetworkListener.hpp"
 #include <vector>
+#include <thread>
 
 class MainNetworkNode : public iMainNetworkListener, public iLifeCycle
 {
@@ -13,6 +14,7 @@ class MainNetworkNode : public iMainNetworkListener, public iLifeCycle
         virtual ~MainNetworkNode();
         ErrorCodes registry(iLifeCycle *ptrToRegistry);
         ErrorCodes run();
+        ErrorCodes routine();
 
         ErrorCodes readBuffor();
         ErrorCodes writeToBuffor(int value);
@@ -23,6 +25,7 @@ class MainNetworkNode : public iMainNetworkListener, public iLifeCycle
 
         iLifeCycle *lifeCycle;
         iLogger *logger;
+        //std::thread t1;
 
 
 

@@ -5,6 +5,7 @@
 #include "SensorMenager.hpp"
 #include "iLogger.hpp"
 #include "iMainNetworkListener.hpp"
+#include <thread>
 
 class Sensor : public iSensor
 {
@@ -12,12 +13,13 @@ class Sensor : public iSensor
         Sensor( iSensorMenager *sensorMenager, iLogger *logger, iMainNetworkListener *networkListener);
         virtual ~Sensor();
         ErrorCodes run();
-        ErrorCodes routine(){return ErrorCodes::NOT_OK;};
+        ErrorCodes routine();
 
     private:
         iSensorMenager *sensorMenager;
         iLogger *logger;
         iMainNetworkListener *networkListener;
+       // std::thread t1;
 };
 
 #endif // SENSOR_HPP

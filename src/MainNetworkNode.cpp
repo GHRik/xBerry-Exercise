@@ -5,8 +5,9 @@
 MainNetworkNode::MainNetworkNode(size_t bufforSize, iLifeCycle *lifeCycle, iLogger *logger)
 : bufforSize(bufforSize), lifeCycle(lifeCycle), logger(logger)
 {
-    //buffor.resize(bufforSize);
+    buffor.resize(bufforSize);
     actualSizeBuffor = 0;
+    actual_status = Status::START;
 }
 
 MainNetworkNode::~MainNetworkNode()
@@ -22,8 +23,19 @@ ErrorCodes MainNetworkNode::registry(iLifeCycle *ptrToRegistry)
 ErrorCodes MainNetworkNode::run()
 {
     ErrorCodes code = ErrorCodes::NOT_OK;
-  //  Sleep(3000);
-    code = readBuffor();
+    actual_status = Status::PROCESSING;
+
+    return code;
+}
+
+ErrorCodes MainNetworkNode::routine()
+{
+    ErrorCodes code = ErrorCodes::NOT_OK;
+    while (actual_status == Status::PROCESSING)
+    {
+        //Sleep(3000);
+        code = readBuffor();
+    }
     return code;
 }
 

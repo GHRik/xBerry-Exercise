@@ -7,4 +7,11 @@ enum ErrorCodes
     NOT_OK,
 };
 
+enum Status
+{
+    START = 0,
+    PROCESSING,
+    STOP
+};
+
 #endif // ERROR_HPP

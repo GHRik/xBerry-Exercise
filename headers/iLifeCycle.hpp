@@ -10,6 +10,8 @@ class iLifeCycle
         virtual ~iLifeCycle();
         virtual ErrorCodes registry(iLifeCycle *ptrToRegistry) = 0;
         virtual ErrorCodes run() = 0;
+        Status actual_status;
+
 };
 
 #endif // ILIFECYCLE_HPP
