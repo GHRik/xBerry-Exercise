@@ -12,17 +12,11 @@ class SensorMenager : public iLifeCycle, public iSensorMenager
         SensorMenager(iLifeCycle *lifeCycle ,iLogger *logger) : lifeCycle(lifeCycle), logger(logger){};
         virtual ~SensorMenager();
 
-        ErrorCodes registry(iLifeCycle *ptrToRegistry)
-        {
-            lifeCycle->registry(this);
-            return ErrorCodes::NOT_OK;
-
-        }
-        ErrorCodes run(){return ErrorCodes::NOT_OK;}
-        ErrorCodes registrySensor(iSensor * ptrToRegistry){return ErrorCodes::NOT_OK;}
+        ErrorCodes registry(iLifeCycle *ptrToRegistry);
+        ErrorCodes run();
+        ErrorCodes registrySensor(iSensor * ptrToRegistry);
 
     private:
-        size_t numberOfSensors;
         std::vector<iSensor *> sensorsVect;
         iLifeCycle *lifeCycle;
         iLogger *logger;

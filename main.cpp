@@ -9,6 +9,7 @@ int main()
 {
     Logger logger;
     LifeCycle lifeCycle(&logger);
+    logger.passLifeCycle(&lifeCycle);
     SensorMenager sensorMenager(&lifeCycle,&logger);
     sensorMenager.registry(&sensorMenager);
     Sensor sensorFirst(&sensorMenager);

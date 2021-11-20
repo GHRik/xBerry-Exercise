@@ -13,8 +13,11 @@ class Logger : public iLogger, public iLifeCycle
         ErrorCodes logInfo(std::string log){return ErrorCodes::NOT_OK;}
         ErrorCodes logWarrning(std::string log){return ErrorCodes::NOT_OK;}
         ErrorCodes logEvent( std::string prefix ,std::string log){return ErrorCodes::NOT_OK;}
-        ErrorCodes registry(iLifeCycle *ptrToRegistry){return ErrorCodes::NOT_OK;}
+        ErrorCodes registry(iLifeCycle *ptrToRegistry);
         ErrorCodes run(){return ErrorCodes::NOT_OK;}
+        void passLifeCycle(iLifeCycle *lifeCycle);
+    private:
+        iLifeCycle *lifeCycle;
 };
 
 #endif // LOGGER_HPP

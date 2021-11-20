@@ -11,7 +11,7 @@ class LifeCycle : public iLifeCycleMenager, public iLifeCycle
     public:
         LifeCycle(iLogger *logger);
         virtual ~LifeCycle();
-        void start(){}
+        void start();
 
         ErrorCodes registry(iLifeCycle *ptrToRegistry);
         ErrorCodes run(){return ErrorCodes::NOT_OK;}

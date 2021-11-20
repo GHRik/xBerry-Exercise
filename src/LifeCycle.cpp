@@ -24,9 +24,9 @@ ErrorCodes LifeCycle::registry( iLifeCycle *ptrToRegistry )
 
 void LifeCycle::start()
 {
-    for(int i = 0; i < objectToLifeArray.size(); ++i)
+    for(size_t i = 0; i < objectToLifeArray.size(); ++i)
     {
-        objectToLifeArray[i].run();
+        objectToLifeArray[i]->run();
     }
 }
 

@@ -8,9 +8,6 @@ class MainNetworkNode
         MainNetworkNode();
         virtual ~MainNetworkNode();
 
-    protected:
-
-    private:
 };
 
 #endif // MAINNETWORKNODE_HPP
