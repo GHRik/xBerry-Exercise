@@ -14,4 +14,8 @@ enum Status
     STOP
 };
 
+
+
 #endif // ERROR_HPP
+
+

@@ -6,8 +6,6 @@
 #include "LifeCycle.hpp"
 #include "MainNetworkNode.hpp"
 
-
-
 int main()
 {
     Logger logger;
@@ -22,10 +20,16 @@ int main()
     Sensor sensorThird(&sensorMenager, &logger, &networkNode);
     networkNode.registry(&networkNode);
 
-
-
     lifeCycle.start();
-
+    int a = -1;
+    while(std::cin >> a)
+    {
+        if (a == 0)
+        {
+            break;
+        }
+    }
+    lifeCycle.stop();
 
     return 0;
 }

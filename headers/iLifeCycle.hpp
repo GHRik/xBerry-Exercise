@@ -10,6 +10,7 @@ class iLifeCycle
         virtual ~iLifeCycle();
         virtual ErrorCodes registry(iLifeCycle *ptrToRegistry) = 0;
         virtual ErrorCodes run() = 0;
+        virtual void stop() = 0;
         Status actual_status;
 
 };

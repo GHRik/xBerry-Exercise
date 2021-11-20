@@ -20,6 +20,7 @@ class Logger : public iLogger, public iLifeCycle
         ErrorCodes logEvent( std::string prefix ,std::string log);
         ErrorCodes registry(iLifeCycle *ptrToRegistry);
         ErrorCodes run(){return ErrorCodes::NOT_OK;}
+        void stop(){}
         void passLifeCycle(iLifeCycle *lifeCycle);
     private:
         iLifeCycle *lifeCycle;

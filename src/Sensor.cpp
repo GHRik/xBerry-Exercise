@@ -1,4 +1,5 @@
 #include "../headers/Sensor.hpp"
+
 Sensor::~Sensor()
 {
     //dtor
@@ -11,20 +12,28 @@ Sensor::Sensor(iSensorMenager *sensorMenager, iLogger *logger, iMainNetworkListe
     actual_status = Status::START;
 }
 
+void Sensor::routine()
+{
+    logger->logInfo("Start routine in sensor object");
+    while(actual_status == Status::PROCESSING)
+    {
+        std::chrono::milliseconds timespan(1000);
+        std::this_thread::sleep_for(timespan);
+        networkListener->writeToBuffor(rand() % 100);
+    }
+}
+
 ErrorCodes Sensor::run()
 {
     logger->logInfo("Start sensor");
     actual_status = Status::PROCESSING;
-    std::thread t1(routine);
+    this->t1 =std::thread(&Sensor::routine,this);
     return ErrorCodes::OK;
 }
 
-ErrorCodes Sensor::routine()
+void Sensor::stop()
 {
-    ErrorCodes code = ErrorCodes::OK;
-    while(actual_status == Status::PROCESSING)
-    {
-        code = networkListener->writeToBuffor(rand() % 100);
-    }
-    return code;
+    actual_status = Status::STOP;
+    t1.join();
 }
+

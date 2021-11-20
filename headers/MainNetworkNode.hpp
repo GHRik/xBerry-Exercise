@@ -6,6 +6,7 @@
 #include "iMainNetworkListener.hpp"
 #include <vector>
 #include <thread>
+#include <chrono>
 
 class MainNetworkNode : public iMainNetworkListener, public iLifeCycle
 {
@@ -15,6 +16,7 @@ class MainNetworkNode : public iMainNetworkListener, public iLifeCycle
         ErrorCodes registry(iLifeCycle *ptrToRegistry);
         ErrorCodes run();
         ErrorCodes routine();
+        void stop();
 
         ErrorCodes readBuffor();
         ErrorCodes writeToBuffor(int value);
@@ -22,10 +24,9 @@ class MainNetworkNode : public iMainNetworkListener, public iLifeCycle
         unsigned int actualSizeBuffor;
         size_t bufforSize;
     private:
-
         iLifeCycle *lifeCycle;
         iLogger *logger;
-        //std::thread t1;
+        std::thread t1;
 
 
 

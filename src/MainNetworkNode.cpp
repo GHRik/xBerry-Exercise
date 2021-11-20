@@ -1,6 +1,5 @@
 #include "MainNetworkNode.hpp"
 
-//#include<windows.h>
 
 MainNetworkNode::MainNetworkNode(size_t bufforSize, iLifeCycle *lifeCycle, iLogger *logger)
 : bufforSize(bufforSize), lifeCycle(lifeCycle), logger(logger)
@@ -24,18 +23,21 @@ ErrorCodes MainNetworkNode::run()
 {
     ErrorCodes code = ErrorCodes::NOT_OK;
     actual_status = Status::PROCESSING;
-
+    this->t1 = std::thread(&MainNetworkNode::routine,this);
     return code;
 }
 
 ErrorCodes MainNetworkNode::routine()
 {
     ErrorCodes code = ErrorCodes::NOT_OK;
-    while (actual_status == Status::PROCESSING)
+    logger->logInfo("Start routine in main network object");
+    while (this->actual_status == Status::PROCESSING)
     {
-        //Sleep(3000);
+        std::chrono::milliseconds timespan(3000);
+        std::this_thread::sleep_for(timespan);
         code = readBuffor();
     }
+
     return code;
 }
 
@@ -62,10 +64,15 @@ ErrorCodes MainNetworkNode::writeToBuffor(int value)
     {
         actualSizeBuffor = 0;
     }
-    buffor.push_back(value);
     buffor.insert(buffor.begin()+actualSizeBuffor,value);
     ++actualSizeBuffor;
 
     conditional_var = false;
     return ErrorCodes::OK;
+}
+
+void MainNetworkNode::stop()
+{
+    actual_status = Status::STOP;
+    t1.join();
 }

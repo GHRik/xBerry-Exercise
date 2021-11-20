@@ -3,7 +3,7 @@
 
 #include "iLifeCycleMenager.hpp"
 #include "iLifeCycle.hpp"
-#include "Logger.hpp"
+#include "iLogger.hpp"
 
 
 class LifeCycle : public iLifeCycleMenager, public iLifeCycle
@@ -15,6 +15,7 @@ class LifeCycle : public iLifeCycleMenager, public iLifeCycle
 
         ErrorCodes registry(iLifeCycle *ptrToRegistry);
         ErrorCodes run(){return ErrorCodes::NOT_OK;}
+        void stop();
 
     private:
         std::vector<iLifeCycle *> objectToLifeArray;

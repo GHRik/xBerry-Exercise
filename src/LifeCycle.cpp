@@ -32,4 +32,11 @@ void LifeCycle::start()
     logger->logInfo("Life cycle start with: "+std::to_string(objectToLifeArray.size())+" services");
 }
 
-
+void LifeCycle::stop()
+{
+        for(size_t i = 0; i < objectToLifeArray.size(); ++i)
+    {
+        objectToLifeArray[i]->stop();
+    }
+    logger->logInfo("Life cycle STOP with: "+std::to_string(objectToLifeArray.size())+" services");
+}

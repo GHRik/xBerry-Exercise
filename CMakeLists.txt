@@ -12,6 +12,8 @@ set(SOURCES
 	src/Sensor.cpp
 	src/SensorMenager.cpp
 	src/Logger.cpp
+	src/MainNetworkNode.cpp
+	src/iMainNetworkListener.cpp
     )
 set(TEST_SOURCES
     

@@ -45,3 +45,13 @@ ErrorCodes SensorMenager::run()
     logger->logInfo("Start "+std::to_string(sensorsVect.size())+"sensors");
     return code;
 }
+
+void SensorMenager::stop()
+{
+    for(size_t i = 0; i < sensorsVect.size(); ++i)
+    {
+        sensorsVect[i]->stop();
+    }
+    logger->logInfo("STOP "+std::to_string(sensorsVect.size())+"sensors");
+    actual_status = Status::STOP;
+}

@@ -9,7 +9,8 @@ class iSensor
         iSensor();
         virtual ~iSensor();
         virtual ErrorCodes run() = 0;
-        virtual ErrorCodes routine() = 0;
+        virtual void stop() = 0;
+        virtual void routine() = 0;
         Status actual_status;
 };
 

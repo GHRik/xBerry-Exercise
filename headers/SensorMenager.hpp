@@ -3,8 +3,8 @@
 
 #include "iLifeCycle.hpp"
 #include "iSensorMenager.hpp"
-#include "Logger.hpp"
-#include "LifeCycle.hpp"
+#include "iLogger.hpp"
+#include "iLifeCycle.hpp"
 
 class SensorMenager : public iLifeCycle, public iSensorMenager
 {
@@ -14,6 +14,7 @@ class SensorMenager : public iLifeCycle, public iSensorMenager
 
         ErrorCodes registry(iLifeCycle *ptrToRegistry);
         ErrorCodes run();
+        void stop();
         ErrorCodes registrySensor(iSensor * ptrToRegistry);
 
     private:

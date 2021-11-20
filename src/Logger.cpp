@@ -26,6 +26,7 @@ ErrorCodes Logger::logError(std::string log)
     return ErrorCodes::OK;
 }
 
+
 ErrorCodes Logger::logWarrning(std::string log)
 {
     #ifdef LOG_LEVEL
