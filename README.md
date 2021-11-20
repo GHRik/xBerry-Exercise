@@ -24,6 +24,7 @@ If you want to close this console aplication write "0" and then press enter.
 ## Description
 
 This aplication is simulation for a small sensor network.
+Sensors send data in evry and buffor is reading every 3sec.
 All of sensors have own thread. 
 All of sensors write data to buffor which is a component of MainNetworkNode.
 This sensors write thise data to buffor using interface: MainNetworkListener.
@@ -61,6 +62,7 @@ Considering that the application works to increase security and stability, a few
 3. Sensors should not write to the buffer directly through one interface. This causes the problem that if, for example, the data type changed, there would be a need to change the sensor code.
 4. The logger should write to the file and not to the standard output.
 5. Not supported in several places of nullpointer occurrence
+6. Sometimes aplication crashing after run all of services.
 
 <a name="res">.</a>
 ## Results
