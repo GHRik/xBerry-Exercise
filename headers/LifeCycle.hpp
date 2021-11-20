@@ -9,16 +9,15 @@
 class LifeCycle : public iLifeCycleMenager, public iLifeCycle
 {
     public:
-        LifeCycle(iLogger *logger) : logger(logger){};
+        LifeCycle(iLogger *logger);
         virtual ~LifeCycle();
         void start(){}
 
-        ErrorCodes registry(iLifeCycle *ptrToRegistry){return ErrorCodes::NOT_OK;}
+        ErrorCodes registry(iLifeCycle *ptrToRegistry);
         ErrorCodes run(){return ErrorCodes::NOT_OK;}
 
     private:
         std::vector<iLifeCycle *> objectToLifeArray;
-        size_t amountOfObject;
         iLogger *logger;
 
 };
