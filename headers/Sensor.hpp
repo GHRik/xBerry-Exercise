@@ -4,11 +4,12 @@
 #include "iSensor.hpp"
 #include "SensorMenager.hpp"
 #include "iLogger.hpp"
+#include "iMainNetworkListener.hpp"
 
 class Sensor : public iSensor
 {
     public:
-        Sensor( iSensorMenager *sensorMenager, iLogger *logger);
+        Sensor( iSensorMenager *sensorMenager, iLogger *logger, iMainNetworkListener *networkListener);
         virtual ~Sensor();
         ErrorCodes run();
         ErrorCodes routine(){return ErrorCodes::NOT_OK;};
@@ -16,6 +17,7 @@ class Sensor : public iSensor
     private:
         iSensorMenager *sensorMenager;
         iLogger *logger;
+        iMainNetworkListener *networkListener;
 };
 
 #endif // SENSOR_HPP

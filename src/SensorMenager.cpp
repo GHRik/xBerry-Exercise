@@ -14,6 +14,7 @@ ErrorCodes SensorMenager::registry(iLifeCycle *ptrToRegistry)
     {
         return code;
     }
+    return code;
 }
 
 ErrorCodes SensorMenager::registrySensor(iSensor* ptrToRegistry)

@@ -1,9 +1,12 @@
 #include "MainNetworkNode.hpp"
 
+//#include<windows.h>
+
 MainNetworkNode::MainNetworkNode(size_t bufforSize, iLifeCycle *lifeCycle, iLogger *logger)
 : bufforSize(bufforSize), lifeCycle(lifeCycle), logger(logger)
 {
-    //ctor
+    //buffor.resize(bufforSize);
+    actualSizeBuffor = 0;
 }
 
 MainNetworkNode::~MainNetworkNode()
@@ -14,4 +17,43 @@ MainNetworkNode::~MainNetworkNode()
 ErrorCodes MainNetworkNode::registry(iLifeCycle *ptrToRegistry)
 {
     return lifeCycle->registry(this);
+}
+
+ErrorCodes MainNetworkNode::run()
+{
+    ErrorCodes code = ErrorCodes::NOT_OK;
+  //  Sleep(3000);
+    code = readBuffor();
+    return code;
+}
+
+ErrorCodes MainNetworkNode::readBuffor()
+{
+    ErrorCodes code = ErrorCodes::NOT_OK;
+    for(size_t i = 0; i < actualSizeBuffor; ++i )
+    {
+        code = logger->logEvent("Sensors value: ",std::to_string(buffor[i]));
+        if(code != ErrorCodes::OK)
+        {
+            return code;
+        }
+    }
+    return code;
+}
+
+ErrorCodes MainNetworkNode::writeToBuffor(int value)
+{
+    bool conditional_var = false;
+    while(conditional_var){};
+    conditional_var = true;
+    if(actualSizeBuffor >= bufforSize)
+    {
+        actualSizeBuffor = 0;
+    }
+    buffor.push_back(value);
+    buffor.insert(buffor.begin()+actualSizeBuffor,value);
+    ++actualSizeBuffor;
+
+    conditional_var = false;
+    return ErrorCodes::OK;
 }

@@ -4,7 +4,8 @@ Sensor::~Sensor()
     //dtor
 }
 
-Sensor::Sensor(iSensorMenager *sensorMenager, iLogger *logger) : sensorMenager(sensorMenager), logger(logger)
+Sensor::Sensor(iSensorMenager *sensorMenager, iLogger *logger, iMainNetworkListener *networkListener)
+: sensorMenager(sensorMenager), logger(logger), networkListener(networkListener)
 {
     sensorMenager->registrySensor(this);
 }
@@ -12,5 +13,6 @@ Sensor::Sensor(iSensorMenager *sensorMenager, iLogger *logger) : sensorMenager(s
 ErrorCodes Sensor::run()
 {
     logger->logInfo("Start sensor");
+    networkListener->writeToBuffor(rand() % 100);
     return ErrorCodes::OK;
 }

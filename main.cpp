@@ -14,13 +14,15 @@ int main()
     LifeCycle lifeCycle(&logger);
     logger.passLifeCycle(&lifeCycle);
     logger.registry(&logger);
-    SensorMenager sensorMenager(&lifeCycle,&logger);
-    sensorMenager.registry(&sensorMenager);
-    Sensor sensorFirst(&sensorMenager, &logger);
-    Sensor sensorSecond(&sensorMenager, &logger);
-    Sensor sensorThird(&sensorMenager, &logger);
     MainNetworkNode networkNode(50,&lifeCycle, &logger);
+    SensorMenager sensorMenager(&lifeCycle,&logger);
+    sensorMenager.registry(&sensorMenager);;
+    Sensor sensorFirst(&sensorMenager, &logger, &networkNode);
+    Sensor sensorSecond(&sensorMenager, &logger, &networkNode);
+    Sensor sensorThird(&sensorMenager, &logger, &networkNode);
     networkNode.registry(&networkNode);
+
+
 
     lifeCycle.start();
 
