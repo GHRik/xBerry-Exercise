@@ -11,10 +11,8 @@ class iLifeCycleMenager
     public:
         iLifeCycleMenager();
         virtual ~iLifeCycleMenager();
-        virtual void run( iSensorMenager & sensorMenager, iLogger & logger) = 0;
-    private:
-        std::vector<iLifeCycle *> objectToLifeArray;
-        size_t amountOfObject;
+        //iSensorMenager & sensorMenager, iLogger & logger
+        virtual void run( ) = 0;
 
 };
 

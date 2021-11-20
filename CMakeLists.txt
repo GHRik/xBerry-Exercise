@@ -8,6 +8,7 @@ set(SOURCES
 	src/iLogger.cpp
 	src/iSensor.cpp
 	src/iSensorMenager.cpp
+	src/LifeCycle.cpp
 	src/Sensor.cpp
 	src/SensorMenager.cpp
 	src/Logger.cpp
