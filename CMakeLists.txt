@@ -3,7 +3,14 @@ project(xBerry-Exercise)
 
 
 set(SOURCES
- 
+ 	src/iLifeCycle.cpp
+	src/iLifeCycleMenager.cpp
+	src/iLogger.cpp
+	src/iSensor.cpp
+	src/iSensorMenager.cpp
+	src/Sensor.cpp
+	src/SensorMenager.cpp
+	src/Logger.cpp
     )
 set(TEST_SOURCES
     
