@@ -4,16 +4,16 @@
 #include "iSensor.hpp"
 #include "SensorMenager.hpp"
 
-class Sensor : iSensor
+class Sensor : public iSensor
 {
     public:
-        Sensor( SensorMenager *sensorMenager ) : sensorMenager(sensorMenager){};
+        Sensor( iSensorMenager *sensorMenager );
         virtual ~Sensor();
         ErrorCodes run(){return ErrorCodes::NOT_OK;};
         ErrorCodes routine(){return ErrorCodes::NOT_OK;};
 
     private:
-        SensorMenager *sensorMenager;
+        iSensorMenager *sensorMenager;
 };
 
 #endif // SENSOR_HPP

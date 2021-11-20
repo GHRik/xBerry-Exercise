@@ -8,7 +8,7 @@ class iLifeCycle
     public:
         iLifeCycle();
         virtual ~iLifeCycle();
-        virtual ErrorCodes registry() = 0;
+        virtual ErrorCodes registry(iLifeCycle *ptrToRegistry) = 0;
         virtual ErrorCodes run() = 0;
 };
 

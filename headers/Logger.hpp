@@ -4,7 +4,7 @@
 #include "iLifeCycle.hpp"
 #include "iLogger.hpp"
 
-class Logger : iLogger, iLifeCycle
+class Logger : public iLogger, public iLifeCycle
 {
     public:
         Logger();
@@ -13,7 +13,7 @@ class Logger : iLogger, iLifeCycle
         ErrorCodes logInfo(std::string log){return ErrorCodes::NOT_OK;}
         ErrorCodes logWarrning(std::string log){return ErrorCodes::NOT_OK;}
         ErrorCodes logEvent( std::string prefix ,std::string log){return ErrorCodes::NOT_OK;}
-        ErrorCodes registry(){return ErrorCodes::NOT_OK;}
+        ErrorCodes registry(iLifeCycle *ptrToRegistry){return ErrorCodes::NOT_OK;}
         ErrorCodes run(){return ErrorCodes::NOT_OK;}
 };
 
