@@ -38,13 +38,19 @@ new sensor , you should registry this sensor in SensorMenager and and write clas
 Above you will see a some examples of use cases in this architecture.
 
 Architecture
-[img]
+<p align="center">
+   <img src="https://github.com/GHRik/xBerry-Exercise/blob/main/images/architecture.jpg" width="50%" height="50%" /><br \>
+</p>
 
 Start program
-[img]
+<p align="center">
+   <img src="https://github.com/GHRik/xBerry-Exercise/blob/main/images/start.jpg" width="50%" height="50%" /><br \>
+</p>
 
 Wrtie to buffor
-[img]
+<p align="center">
+   <img src="https://github.com/GHRik/xBerry-Exercise/blob/main/images/writeToBuffer.JPG" width="50%" height="50%" /><br \>
+</p>
 
 <a name="todo">.</a>
 ## To-Dos
