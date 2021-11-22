@@ -7,7 +7,9 @@
 #include "iMainNetworkListener.hpp"
 #include <thread>
 #include <chrono>
-
+#include <ctime>
+#include <cstdlib>
+#include <cstdio>
 
 class Sensor : public iSensor
 {

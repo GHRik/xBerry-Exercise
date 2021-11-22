@@ -27,6 +27,7 @@ class MainNetworkNode : public iMainNetworkListener, public iLifeCycle
         iLifeCycle *lifeCycle;
         iLogger *logger;
         std::thread t1;
+        bool conditional_var;
 
 
 

@@ -15,12 +15,15 @@ Sensor::Sensor(iSensorMenager *sensorMenager, iLogger *logger, iMainNetworkListe
 void Sensor::routine()
 {
     logger->logInfo("Start routine in sensor object");
+    srand(time( NULL ));
     while(actual_status == Status::PROCESSING)
     {
-        std::chrono::milliseconds timespan(1000);
-        std::this_thread::sleep_for(timespan);
+
+
         networkListener->writeToBuffor(rand() % 100);
     }
+    std::chrono::milliseconds timespan(1);
+    std::this_thread::sleep_for(timespan);
 }
 
 ErrorCodes Sensor::run()

@@ -18,8 +18,12 @@ set(SOURCES
 set(TEST_SOURCES
     
    )
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED)
+set(CMAKE_CXX_STANDARD 11)
 
 INCLUDE_DIRECTORIES(headers)
+
 add_executable(${CMAKE_PROJECT_NAME}
                ${SOURCES} 
                main.cpp 

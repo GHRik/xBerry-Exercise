@@ -2,7 +2,7 @@
 
 
 MainNetworkNode::MainNetworkNode(size_t bufforSize, iLifeCycle *lifeCycle, iLogger *logger)
-: bufforSize(bufforSize), lifeCycle(lifeCycle), logger(logger)
+: bufforSize(bufforSize), lifeCycle(lifeCycle), logger(logger), conditional_var(false)
 {
     buffor.resize(bufforSize);
     actualSizeBuffor = 0;
@@ -33,7 +33,7 @@ ErrorCodes MainNetworkNode::routine()
     logger->logInfo("Start routine in main network object");
     while (this->actual_status == Status::PROCESSING)
     {
-        std::chrono::milliseconds timespan(3000);
+        std::chrono::milliseconds timespan(2000);
         std::this_thread::sleep_for(timespan);
         code = readBuffor();
     }
@@ -44,7 +44,7 @@ ErrorCodes MainNetworkNode::routine()
 ErrorCodes MainNetworkNode::readBuffor()
 {
     ErrorCodes code = ErrorCodes::NOT_OK;
-    for(size_t i = 0; i < actualSizeBuffor; ++i )
+    for(size_t i = 0; i < buffor.size(); ++i )
     {
         code = logger->logEvent("Sensors value: ",std::to_string(buffor[i]));
         if(code != ErrorCodes::OK)
@@ -57,14 +57,21 @@ ErrorCodes MainNetworkNode::readBuffor()
 
 ErrorCodes MainNetworkNode::writeToBuffor(int value)
 {
-    bool conditional_var = false;
-    while(conditional_var){};
+    while(conditional_var)
+    {
+        std::chrono::milliseconds timespan(1);
+        std::this_thread::sleep_for(timespan);
+        if(actual_status == Status::STOP)
+        {
+            return ErrorCodes::OK;
+        }
+    }
     conditional_var = true;
     if(actualSizeBuffor >= bufforSize)
     {
         actualSizeBuffor = 0;
     }
-    buffor.insert(buffor.begin()+actualSizeBuffor,value);
+    buffor[actualSizeBuffor] = value;
     ++actualSizeBuffor;
 
     conditional_var = false;
@@ -74,5 +81,6 @@ ErrorCodes MainNetworkNode::writeToBuffor(int value)
 void MainNetworkNode::stop()
 {
     actual_status = Status::STOP;
+    conditional_var = false;
     t1.join();
 }

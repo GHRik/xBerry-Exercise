@@ -12,7 +12,7 @@ int main()
     LifeCycle lifeCycle(&logger);
     logger.passLifeCycle(&lifeCycle);
     logger.registry(&logger);
-    MainNetworkNode networkNode(50,&lifeCycle, &logger);
+    MainNetworkNode networkNode(10,&lifeCycle, &logger);
     SensorMenager sensorMenager(&lifeCycle,&logger);
     sensorMenager.registry(&sensorMenager);;
     Sensor sensorFirst(&sensorMenager, &logger, &networkNode);
