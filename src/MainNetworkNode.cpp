@@ -67,7 +67,7 @@ ErrorCodes MainNetworkNode::writeToBuffor(int value)
         }
     }
     conditional_var = true;
-    if(actualSizeBuffor >= bufforSize)
+    if(actualSizeBuffor >= bufforSize-1)
     {
         actualSizeBuffor = 0;
     }
