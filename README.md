@@ -20,6 +20,9 @@
 Aplication will work automatic if you open a executable file.
 If you want to close this console aplication write "0" and then press enter.
 
+If cmake output exe file will not work please add file to project in any enviroment.
+I was using CodeBlocks with C++11 features enabled.
+
 <a name="des">.</a>
 ## Description
 
@@ -62,7 +65,7 @@ Considering that the application works to increase security and stability, a few
 3. Sensors should not write to the buffer directly through one interface. This causes the problem that if, for example, the data type changed, there would be a need to change the sensor code.
 4. The logger should write to the file and not to the standard output.
 5. Not supported in several places of nullpointer occurrence
-6. Sometimes aplication crashing after run all of services.
+6. Sometimes aplication crashing after run all of services. - DONE
 
 <a name="res">.</a>
 ## Results
